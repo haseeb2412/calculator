@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="script.js"></script> -->
+</head>
+<body>
+    <section class="calculator">
+        <form >
+            <input type="text" placeholder="Numbers" class="screen">
+        </form>
+
+        <div class="buttons">
+            <!-- mathematical operators -->
+            <button type="button" class="btn btn-orange" data-num="*">*</button>
+            <button type="button" class="btn btn-orange" data-num="-">-</button>
+            <button type="button" class="btn btn-orange" data-num="/">/</button>
+            <button type="button" class="btn btn-orange" data-num="+">+</button>
+
+            <!-- numbers -->
+            <button type="button" class="btn btn-yellow" data-num="9">9</button>
+            <button type="button" class="btn btn-yellow" data-num="8">8</button>
+            <button type="button" class="btn btn-yellow" data-num="7">7</button>
+            <button type="button" class="btn btn-yellow" data-num="6">6</button>
+            <button type="button" class="btn btn-yellow" data-num="5">5</button>
+            <button type="button" class="btn btn-yellow" data-num="4">4</button>
+            <button type="button" class="btn btn-yellow" data-num="3">3</button>
+            <button type="button" class="btn btn-yellow" data-num="2">2</button>
+            <button type="button" class="btn btn-yellow" data-num="1">1</button>
+            <button type="button" class="btn btn-yellow" data-num="0">0</button>
+            <button type="button" class="btn btn-yellow" data-num=".">.</button>
+
+            <!-- clear and equal to -->
+            <button type="button" class="btn-equal" >=</button>
+            <button type="button" class="btn-clear" >C</button>
+        </div>
+    </section>
+<script>
+    (function(){
+    let screen = document.querySelector('.screen');
+    let buttons = document.querySelectorAll('.btn');
+    let equal = document.querySelector('.btn-equal');
+    let clear = document.querySelector('.btn-clear');
+    
+
+    // ths button is used to get the value and display it on screen
+    buttons.forEach(function(button){
+        button.addEventListener('click', function(e){
+          let value = e.target.dataset.num;
+          screen.value += value;
+        })
+      });
+
+    // this equal button is used to perform the operation
+    equal.addEventListener('click', function(e){
+        if (screen.value==='') {
+            screen.value=="";
+        }
+        else{
+            let answer = eval(screen.value);
+            screen.value = answer;
+        }
+    })
+    
+    // this clear button is used to clear the data 
+
+    clear.addEventListener('click',function(e){
+        screen.value="";
+    })
+
+})();
+</script>
+</body>
+</html>
